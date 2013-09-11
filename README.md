@@ -1,6 +1,6 @@
 # grunt-stylus-sprite
 
-> Compiles Stylus files and generates sprites using node-sprite.
+> Compiles Stylus files and generates sprites using [node-sprite](https://github.com/naltatis/node-sprite).
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -18,12 +18,9 @@ grunt.loadNpmTasks('grunt-stylus-sprite');
 
 ```
 
-## The "sprite" task
+## Usage
 
-This task generates sprites using [node-sprite](https://github.com/naltatis/node-sprite). After generating the sprites, a property of the `grunt` object is set, i.e. `grunt.spriteHelper` which contains a custom Stylus function that allows defining sprites in Stylus.
-
-### Overview
-In your project's Gruntfile, add a section named `sprite` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add sections `sprite` and `stylus` to the data object passed into `grunt.initConfig()` as shown in the example below. The `sprite` task must run at least once before the `stylus` task because the `stylus` task uses the output of the `sprite` task.
 
 ```js
 grunt.initConfig({
@@ -33,34 +30,7 @@ grunt.initConfig({
       imageHttpPath: '/assets',
     },
     build: {}
-  }
-})
-```
-
-### Options
-
-#### options.imagePath
-Type: `String`
-Default value: `null`
-
-A path that contains the images to generate sprites. Each sprite should be in its own directory as required by node-sprite.
-
-#### options.imageHttpPath
-Type: `String`
-Default value: `null`
-
-Base path to use while generating CSS for sprite image URLs.
-
-
-## The "stylus" task
-
-This task compiles Stylus files. Additionally, it uses a property defined in the `grunt` object, i.e. `grunt.spriteHelper` which contains a custom Stylus function that allows defining sprites in Stylus when possible.
-
-### Overview
-In your project's Gruntfile, add a section named `stylus` to the data object passed into `grunt.initConfig()`.
-
-```js
-grunt.initConfig({
+  },
   stylus: {
     options: {
       banner: '/* This is an example CSS file */',
@@ -75,6 +45,30 @@ grunt.initConfig({
 })
 ```
 
+
+## The "sprite" task
+
+This task generates sprites using [node-sprite](https://github.com/naltatis/node-sprite). After generating the sprites, a property of the `grunt` object is set, i.e. `grunt.spriteHelper` which contains a custom Stylus function that allows defining sprites in Stylus.
+
+### Options
+
+#### options.imagePath
+Type: `String`
+Default value: `null`
+
+A path that contains the images to generate sprites. Each sprite should be in its own directory as required by [node-sprite](https://github.com/naltatis/node-sprite).
+
+#### options.imageHttpPath
+Type: `String`
+Default value: `null`
+
+Base path to use while generating CSS for sprite image URLs.
+
+
+## The "stylus" task
+
+This task compiles Stylus files. Additionally, it uses a property defined in the `grunt` object, i.e. `grunt.spriteHelper` which contains a custom Stylus function that allows defining sprites in Stylus.
+
 ### Options
 
 #### options.includePath
@@ -85,7 +79,7 @@ Stylus include path.
 
 #### options.banner
 Type: `String`
-Default value: ``
+Default value:
 
 A string that is added to the beginning of the compiled CSS file.
 
@@ -99,4 +93,5 @@ Enable or disable CSS compression.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-1.0.0 - Initial release.
+- 1.0.1 - Minor fixes.
+- 1.0.0 - Initial release.

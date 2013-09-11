@@ -1,7 +1,7 @@
 {
   "name": "grunt-stylus-sprite",
   "description": "Compiles Stylus files and generates sprites using node-sprite.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/sahibinden/grunt-stylus-sprite",
   "author": {
     "name": "sahibinden.com"
@@ -20,19 +20,21 @@
   "scripts": {
     "test": "grunt test"
   },
+  "dependencies": {
+    "node-sprite": "~0.1.2",
+    "stylus": "~0.37.0"
+  },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-copy": "~0.4.1",
-    "grunt": "~0.4.1",
-    "node-sprite": "~0.1.2",
-    "stylus": "~0.34.1"
+    "grunt": "~0.4.1"
   },
   "peerDependencies": {
     "grunt": "~0.4.1"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin", "grunt", "stylus", "sprite"
   ]
 }
