@@ -15,7 +15,9 @@ module.exports = function(grunt) {
         var options = this.options({
             includePath: null,
             banner: '',
-            compress: true
+            compress: true,
+            firebug: false,
+            linenos: false
         });
 
         // iterate over dest files sequentially
@@ -31,6 +33,8 @@ module.exports = function(grunt) {
                 var s = stylus(stylStr)
                     .set('filename', filename)
                     .set('compress', options.compress)
+                    .set('firebug', options.firebug)
+                    .set('linenos', options.linenos)
                     .include(options.includePath);
 
                 if (nib) {
