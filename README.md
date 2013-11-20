@@ -52,18 +52,19 @@ This task generates sprites using [node-sprite](https://github.com/naltatis/node
 
 ### Options
 
-#### options.imagePath
+Options are passed directly to [node-sprite](https://github.com/naltatis/node-sprite). See its documentation for more options.
+
+#### options.path
 Type: `String`
 Default value: `null`
 
-A path that contains the images to generate sprites. Each sprite should be in its own directory as required by [node-sprite](https://github.com/naltatis/node-sprite).
+A path that contains the images to generate sprites. Each sprite should be in its own directory.
 
-#### options.imageHttpPath
+#### options.httpPath
 Type: `String`
 Default value: `null`
 
 Base path to use while generating CSS for sprite image URLs.
-
 
 ## The "stylus" task
 
@@ -89,10 +90,24 @@ Default value: `true`
 
 Enable or disable CSS compression.
 
+#### options.customize
+Type: `function`
+
+Hook function for stylus customization.
+
+Example:
+```js
+function (filename, stylus, s) {
+  s.define('url', stylus.url({paths: [__dirname + '/build']}));
+  s.use(require('nib')());
+}
+```
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+- 1.1.0 - Pass options of sprite task directly to node-sprite. Add customize option to stylus task.
 - 1.0.2 - Add stylus options: firebug and linenos.
 - 1.0.1 - Minor fixes.
 - 1.0.0 - Initial release.

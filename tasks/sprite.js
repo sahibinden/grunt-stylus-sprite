@@ -19,15 +19,11 @@ module.exports = function(grunt) {
         this.requiresConfig('sprite');
 
         var sprite = require('node-sprite');
-
         var endTask = this.async();
-        var options = this.options({
-            imagePath: null,
-            imageHttpPath: null
-        });
+        var options = this.options();
 
         // use node-sprite's stylus support to generate sprites
-        sprite.stylus({path: options.imagePath, httpPath: options.imageHttpPath}, function(err, helper) {
+        sprite.stylus(options, function(err, helper) {
             if (err) {
                 throw err;
             }

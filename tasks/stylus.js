@@ -18,17 +18,10 @@ module.exports = function(grunt) {
     grunt.registerMultiTask('stylus', 'Compile stylus files.', function() {
         this.requiresConfig('stylus');
 
-        var stylus = require('stylus'),
-            nib = null;
-
-        try {
-            nib = require('nib');
-        } catch(e) {
-            // pass
-        }
-
+        var stylus = require('stylus');
         var endTask = this.async();
         var options = this.options({
+            customize: function (filename, stylus, s) {},
             includePath: null,
             banner: '',
             compress: true,
@@ -53,13 +46,11 @@ module.exports = function(grunt) {
                     .set('linenos', options.linenos)
                     .include(options.includePath);
 
-                if (nib) {
-                    s.use(nib());
-                }
-
                 if (grunt.spriteHelper) {
                     s.define('sprite', grunt.spriteHelper.fn);
                 }
+
+                options.customize(filename, stylus, s);
 
                 s.render(function (err, css) {
                     if (err) {
