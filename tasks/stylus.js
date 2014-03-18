@@ -26,7 +26,8 @@ module.exports = function(grunt) {
             banner: '',
             compress: true,
             firebug: false,
-            linenos: false
+            linenos: false,
+            seperate: false
         });
 
         // iterate over dest files sequentially
@@ -57,8 +58,13 @@ module.exports = function(grunt) {
                         throw err;
                     }
 
-                    // signal that compilation is finished and return the result
-                    endCompile(null, css);
+                    if (options.seperate) {
+                        grunt.file.write(filename.replace('.styl', '.css'), css);
+                        endCompile(null, '');
+                    } else {
+                        // signal that compilation is finished and return the result
+                        endCompile(null, css);
+                    }
                 });
             }, function(err, compileResults) {
                 if (err) {

@@ -103,10 +103,16 @@ function (filename, stylus, s) {
 }
 ```
 
+#### options.seperate
+Type: `Boolean`
+
+Set `true` to compile every matched stylus files seperately to same folder instead of concat them.
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+- 1.1.1 - seperate option added
 - 1.1.0 - Pass options of sprite task directly to node-sprite. Add customize option to stylus task.
 - 1.0.2 - Add stylus options: firebug and linenos.
 - 1.0.1 - Minor fixes.
